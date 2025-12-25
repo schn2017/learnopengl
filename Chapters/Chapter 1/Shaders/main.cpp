@@ -83,8 +83,6 @@ int main()
     // -----------
     while (!glfwWindowShouldClose(window))
     {
-        float offset = 0.5f;
-        ourShader.setFloat("xOffset", offset);
         // input
         // -----
         processInput(window);
