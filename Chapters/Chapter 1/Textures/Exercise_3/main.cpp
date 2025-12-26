@@ -1,3 +1,5 @@
+//Try to display only the center pixels of the texture image on the rectangle in such a way that the individual pixels are getting visible by changing the texture coordinates. Try to set the texture filtering method to GL_NEAREST to see the pixels more clearly: 
+
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
 
@@ -7,7 +9,7 @@
 #include <iostream>
 
 void framebuffer_size_callback(GLFWwindow* window, int width, int height);
-void processInput(GLFWwindow *window, Shader shader);
+void processInput(GLFWwindow *window);
 
 // settings
 const unsigned int SCR_WIDTH = 800;
@@ -100,10 +102,10 @@ int main()
     // ------------------------------------------------------------------
     float vertices[] = {
         // positions          // colors           // texture coords
-        0.5f,  0.5f, 0.0f,   1.0f, 0.0f, 0.0f,   1.0, 1.0f,   // top right
-        0.5f, -0.5f, 0.0f,   0.0f, 1.0f, 0.0f,   1.0f, 0.0f,   // bottom right
-        -0.5f, -0.5f, 0.0f,   0.0f, 0.0f, 1.0f,   0.0f, 0.0f,   // bottom left
-        -0.5f,  0.5f, 0.0f,   1.0f, 1.0f, 0.0f,   0.0f, 1.0f    // top left 
+        0.5f,  0.5f, 0.0f,   1.0f, 0.0f, 0.0f,   0.75, 0.75f,   // top right
+        0.5f, -0.5f, 0.0f,   0.0f, 1.0f, 0.0f,   0.75f, 0.25f,   // bottom right
+        -0.5f, -0.5f, 0.0f,   0.0f, 0.0f, 1.0f,   0.25f, 0.25f,   // bottom left
+        -0.5f,  0.5f, 0.0f,   1.0f, 1.0f, 0.0f,   0.25f, 0.75f    // top left 
     };
     
     unsigned int indices[] = {
@@ -142,14 +144,14 @@ int main()
     ourShader.use();
     glUniform1i(glGetUniformLocation(ourShader.id, "texture1"), 0);
     ourShader.setInt("texture2", 1);
-    ourShader.setFloat("weight", 0.5f);
 
     // render loop
     // -----------
+    
     while (!glfwWindowShouldClose(window))
     {
         // input
-        processInput(window, ourShader);
+        processInput(window);
 
         // render
         glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
@@ -184,27 +186,10 @@ int main()
 
 // process all input: query GLFW whether relevant keys are pressed/released this frame and react accordingly
 // ---------------------------------------------------------------------------------------------------------
-void processInput(GLFWwindow *window, Shader shader)
+void processInput(GLFWwindow *window)
 {
     if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
         glfwSetWindowShouldClose(window, true);
-    else if (glfwGetKey(window, GLFW_KEY_UP) == GLFW_PRESS) {
-        float weight;
-
-        glGetUniformfv(shader.id, 2, &weight);
-        
-        shader.setFloat("weight", weight + 0.01f);
-        std::cout << (weight + 0.01f) << std::endl;
-
-    } 
-    else if (glfwGetKey(window, GLFW_KEY_DOWN) == GLFW_PRESS) {
-        float weight;
-
-        glGetUniformfv(shader.id, 2, &weight);
-        
-        shader.setFloat("weight", weight - 0.01f);
-        std::cout << (weight - 0.01f) << std::endl;
-    } 
 }
 
 // glfw: whenever the window size changed (by OS or user resize) this callback function executes
