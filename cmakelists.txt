@@ -36,7 +36,7 @@ EXCLUDE_FROM_ALL
 SYSTEM)
 FetchContent_MakeAvailable(glm)
 
-add_executable(${PROJECT_NAME} src/main.cpp src/shader.cpp)
+add_executable(${PROJECT_NAME} src/main.cpp src/shader.cpp src/stb_image.cpp)
 target_compile_features(${PROJECT_NAME} PRIVATE cxx_std_17)
 target_link_libraries(${PROJECT_NAME} PRIVATE glad glfw glm)
 target_include_directories(${PROJECT_NAME} PRIVATE ${INCLUDE_DIRS})
