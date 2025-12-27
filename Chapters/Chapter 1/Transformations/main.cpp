@@ -168,18 +168,8 @@ int main()
 
         glBindVertexArray(VAO);
         glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
-
-        // but place it at a different position using transformations only. Make sure this second container is placed at the top-left of the window and instead of rotating, scale it over time (using the sin function is useful here; note that using sin will cause the object to invert as soon as a negative scale is applied)
-        glm::mat4 topLeftTrans = glm::mat4(1.0f);
-        topLeftTrans = glm::translate(topLeftTrans, glm::vec3(-0.5f, 0.5f, 0.0f));
-
-        float scaleAmount = static_cast<float>(sin(glfwGetTime()));
-
-        topLeftTrans = glm::scale(topLeftTrans, glm::vec3(scaleAmount, scaleAmount, scaleAmount));
-
-        glUniformMatrix4fv(transformLoc, 1, GL_FALSE, glm::value_ptr(topLeftTrans));
-        glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
-
+        // glfw: swap buffers and poll IO events (keys pressed/released, mouse moved etc.)
+        // -------------------------------------------------------------------------------
         glfwSwapBuffers(window);
         glfwPollEvents();
     }
