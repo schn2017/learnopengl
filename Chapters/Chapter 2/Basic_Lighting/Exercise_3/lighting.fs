@@ -1,3 +1,4 @@
+// Do Phong shading in view space instead of world space
 #version 330 core
 
 in vec3 FragPos;
