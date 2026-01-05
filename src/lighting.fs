@@ -6,6 +6,7 @@ struct Material {
 }; 
 
 struct Light {
+    // Both for spotlights
     vec3 position; // For positional lights
     vec3 direction; // For directional lights
   
@@ -17,6 +18,9 @@ struct Light {
     float constant;
     float linear;
     float quadratic;
+
+    // Spotlight cutoff
+    float cutoff;
 };
 
 in vec2 TexCoords;
