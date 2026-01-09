@@ -169,7 +169,7 @@ int main()
     glEnableVertexAttribArray(1);
 
     // texture attribute
-    glVertexAttribPointer(2, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(6 * sizeof(float)));
+    glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(6 * sizeof(float)));
     glEnableVertexAttribArray(2);
 
     // Light source cube
@@ -293,6 +293,7 @@ int main()
 
         // also draw the lamp object(s)
         lightSourceShader.use();
+        lightSourceShader.setVec3("lightColor", glm::vec3(1.0f));
         lightSourceShader.setMat4("projection", projection);
         lightSourceShader.setMat4("view", view);
 
