@@ -150,6 +150,13 @@ int main()
         glm::vec3( 0.0f,  0.0f, -3.0f)
     };
 
+    glm::vec3 pointLightColors[] = {
+        glm::vec3(1.0f),
+        glm::vec3(1.0f, 0.0f, 0.0f),
+        glm::vec3(0.0f, 1.0f, 0.0f),
+        glm::vec3(0.0f, 0.0f, 1.0f),
+    };
+
     unsigned int VBO, cubeVAO;
     glGenVertexArrays(1, &cubeVAO);
     glGenBuffers(1, &VBO);
@@ -305,6 +312,8 @@ int main()
             model = glm::translate(model, pointLightPositions[i]);
             model = glm::scale(model, glm::vec3(0.2f)); // Make it a smaller cube
             lightSourceShader.setMat4("model", model);
+
+            lightSourceShader.setVec3("lightColor", pointLightColors[i]);
             glDrawArrays(GL_TRIANGLES, 0, 36);
         }
 
