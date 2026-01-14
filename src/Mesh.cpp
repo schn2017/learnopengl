@@ -1,4 +1,5 @@
 #include "Mesh.h"
+
 #include "Shader.h"
 
 Mesh::Mesh(std::vector<Vertex> vertices, std::vector<unsigned int> indices, std::vector<Texture> textures)
@@ -59,7 +60,7 @@ void Mesh::draw(Shader &shader)
 
         glBindTexture(GL_TEXTURE_2D, m_textures[i].id);
     }
-    
+
     glActiveTexture(GL_TEXTURE0);
 
     // draw mesh
