@@ -81,7 +81,8 @@ int main()
     glEnable(GL_DEPTH_TEST);
     glEnable(GL_CULL_FACE);
     glCullFace(GL_FRONT);
-    glFrontFace(GL_CW);  
+    glFrontFace(GL_CW);
+
     // build and compile shaders
     // -------------------------
     Shader shader("light-source.vs", "light-source.fs");
