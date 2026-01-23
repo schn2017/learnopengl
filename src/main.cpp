@@ -159,6 +159,11 @@ int main()
     glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void*)(3 * sizeof(float)));
     glBindVertexArray(0);
 
+    // Custom Framebuffer
+    unsigned int fbo;
+    glGenFramebuffers(1, &fbo);
+    glBindFramebuffer(GL_FRAMEBUFFER, fbo);  
+
     // load textures
     // -------------
     unsigned int cubeTexture  = loadTexture("marble.jpg");
