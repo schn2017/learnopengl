@@ -247,6 +247,7 @@ int main()
         // ------
 
         // Draw the mirror first
+
         // bind to framebuffer and draw scene as we normally would to color texture 
         glBindFramebuffer(GL_FRAMEBUFFER, framebuffer);
         glViewport(0, 0, SCR_WIDTH, SCR_HEIGHT);
