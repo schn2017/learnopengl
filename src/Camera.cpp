@@ -33,7 +33,7 @@ float Camera::getZoom()
 
 float Camera::getYaw()
 {
-    return m_yaw;
+    return m_yaw; 
 }
 
 glm::vec3 Camera::getPosition()
