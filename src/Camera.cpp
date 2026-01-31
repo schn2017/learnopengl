@@ -38,7 +38,7 @@ float Camera::getYaw()
 
 glm::vec3 Camera::getPosition()
 {
-    return m_position;
+    return m_position; 
 }
 
 glm::vec3 Camera::getFront()
